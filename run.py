@@ -1,6 +1,7 @@
 from flask import Flask, app
 import os
 import json
+from flask import Flask , render_template, request 
 from flask.templating import render_template
  
 
@@ -17,8 +18,10 @@ def about():
     return  render_template("about.html",page_title= "About",company= data)
    
 
-@app.route("/contact")
+@app.route("/contact",methods=["GET","POST"])
 def contact():
+    if request.method == "POST" :
+         print(request.form)
     return  render_template("contact.html",page_title= "Contact")
 
 @app.route("/careers")
